@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('product_weights', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id')->nullable();
-                  $table->foreign('product_id')
-                  ->references('id')
-                  ->on('products')
+            $table->foreignId('product_id')
+                  ->nullable()
+                  ->constrained('products')
                   ->onDelete('cascade');
             $table->integer('brand_id')->nullable();
             $table->unsignedBigInteger('measurement_id')->nullable();
-                  $table->foreign('measurement_id')
-                  ->references('id')
-                  ->on('measurements')
+            $table->foreignId('measurement_id')
+                  ->nullable()
+                  ->constrained('measurements')
                   ->onDelete('cascade');
             $table->integer('price');
             $table->integer('availability')->default(0);

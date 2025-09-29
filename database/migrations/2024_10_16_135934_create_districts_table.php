@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('division_id');
-                $table->foreign('division_id')
-                    ->references('id')
-                    ->on('divisions')
-                    ->onDelete('cascade');
+            $table->foreignId('division_id')
+                  ->nullable()
+                  ->constrained('divisions')
+                  ->onDelete('cascade');
             $table->string('name');
             $table->timestamps();
         });

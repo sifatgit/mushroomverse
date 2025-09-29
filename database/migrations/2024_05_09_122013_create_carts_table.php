@@ -23,10 +23,10 @@ return new class extends Migration
                   //->on('products')
                   //->onDelete('cascade');
             $table->unsignedBigInteger('product_weight_id')->nullable();
-                    $table->foreign('product_weight_id')
-                    ->references('id')
-                    ->on('product_weights')
-                    ->onDelete('cascade');
+            $table->foreignId('product_weight_id')
+                  ->nullable()
+                  ->constrained('product_weights');
+                  ->onDelete('cascade');
             $table->unsignedBigInteger('user_id')->nullable();
                     //$table->foreign('user_id')
                     //->references('id')
@@ -45,10 +45,10 @@ return new class extends Migration
                     //->on('brands')
                     //->onDelete('cascade');
             $table->unsignedBigInteger('order_id')->nullable();
-                    $table->foreign('order_id')
-                    ->references('id')
-                    ->on('orders')
-                    ->onDelete('cascade');                                      
+            $table->foreignId('order_id')
+                  ->nullable()
+                  ->constrained('orders')
+                  ->onDelete('cascade');                                     
                   $table->string('ip_address')->nullable();
                   $table->integer('product_quantity')->default(1);            
                   $table->timestamps();
