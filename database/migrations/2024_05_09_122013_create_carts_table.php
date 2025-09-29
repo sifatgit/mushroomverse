@@ -22,7 +22,6 @@ return new class extends Migration
                   //->references('id')
                   //->on('products')
                   //->onDelete('cascade');
-            $table->unsignedBigInteger('product_weight_id')->nullable();
             $table->foreignId('product_weight_id')
                   ->nullable()
                   ->constrained('product_weights')
@@ -44,7 +43,6 @@ return new class extends Migration
                     //->references('id')
                     //->on('brands')
                     //->onDelete('cascade');
-            $table->unsignedBigInteger('order_id')->nullable();
             $table->foreignId('order_id')
                   ->nullable()
                   ->constrained('orders')

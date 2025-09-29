@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('division_id');
             $table->foreignId('division_id')
                   ->nullable()
                   ->constrained('divisions')

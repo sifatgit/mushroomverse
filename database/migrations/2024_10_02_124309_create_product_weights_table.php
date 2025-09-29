@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('product_weights', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id')->nullable();
             $table->foreignId('product_id')
                   ->nullable()
                   ->constrained('products')
                   ->onDelete('cascade');
             $table->integer('brand_id')->nullable();
-            $table->unsignedBigInteger('measurement_id')->nullable();
             $table->foreignId('measurement_id')
                   ->nullable()
                   ->constrained('measurements')
