@@ -1,22 +1,22 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- ALL JS FILES -->
-    <script src="{{asset('public/frontend/asset/js/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/popper.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/popper.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/bootstrap.min.js')}}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <!-- ALL PLUGINS -->
-    <script src="{{asset('public/frontend/asset/js/jquery.superslides.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/bootstrap-select.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/inewsticker.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/bootsnav.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/images-loded.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/isotope.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/baguetteBox.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/form-validator.min.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/contact-form-script.js')}}"></script>
-    <script src="{{asset('public/frontend/asset/js/custom.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/jquery.superslides.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/bootstrap-select.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/inewsticker.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/bootsnav.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/images-loded.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/isotope.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/baguetteBox.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/form-validator.min.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/contact-form-script.js')}}"></script>
+    <script src="{{asset('frontend/asset/js/custom.js')}}"></script>
 <script type="text/javascript">
         // Setup for CSRF Token (optional for GET, but included if needed for security)
         $.ajaxSetup({

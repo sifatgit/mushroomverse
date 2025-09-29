@@ -15,7 +15,7 @@ class AdminIP
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $allowedIPs = ['::1']; // Replace these with actual admin IPs 192.168.0.176
+        $allowedIPs = ['127.0.0.1']; // Replace these with actual admin IPs 192.168.0.176
 
         // Check if user is authenticated and IP is allowed
         if (!in_array($request->ip(), $allowedIPs)) {

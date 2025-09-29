@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {   
         $carts = Cart::totalCarts();
         Paginator::useBootstrapFour();
-        $setting = Setting::first();
+         $setting = Setting::first();
         view()->share([
             'setting' => $setting,
             'carts' => $carts
