@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_weight_id')->nullable();
             $table->foreignId('product_weight_id')
                   ->nullable()
-                  ->constrained('product_weights');
+                  ->constrained('product_weights')
                   ->onDelete('cascade');
             $table->unsignedBigInteger('user_id')->nullable();
                     //$table->foreign('user_id')
