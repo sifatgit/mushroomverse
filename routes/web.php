@@ -140,7 +140,7 @@ Route::middleware('auth')->group(function () {
         //dashboard routes
 
 
-    Route::get('/admin',function(){
+    Route::get('/admin-dashboard',function(){
 
     return view('backend.pages.dashboard');
 });
