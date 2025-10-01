@@ -166,7 +166,6 @@ Route::get('/category/delete/{id}',[AdminCategoriesController::class,'delete'])-
 //Admin Product Routes
 
 Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products');
-Route::get('/product/add',[AdminProductsController::class,'add'])->name('admin.product.add');
 Route::post('/product/store',[AdminProductsController::class,'store'])->name('admin.product.store');
 Route::post('/product/update/{id}',[AdminProductsController::class,'update'])->name('admin.product.update');
 Route::get('/product/delete/{id}',[AdminProductsController::class,'delete'])->name('admin.product.delete');

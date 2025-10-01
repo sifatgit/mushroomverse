@@ -52,7 +52,7 @@
     <!-- Start Main Top -->
     <header class="main-header">
         <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg  navbar-default bootsnav" style="background-image: url('{{asset('public/frontend/asset/images/mushroomverse_web_bg3.png')}}'); background-size: cover; ">
+        <nav class="navbar navbar-expand-lg  navbar-default bootsnav" style="background-image: url('{{asset('frontend/asset/images/mushroomverse_web_bg3.png')}}'); background-size: cover; ">
             <div class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">

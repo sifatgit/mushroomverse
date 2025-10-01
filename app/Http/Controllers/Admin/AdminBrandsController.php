@@ -10,6 +10,14 @@ class AdminBrandsController extends Controller
 {
 public function store(Request $request){
 
+      $validated = $request->validate([
+
+          'name' => 'required|string',
+          'description' => 'required|string',
+          'logo' => 'nullable',
+
+      ]);
+
         $brand = new Brand;
 
         $brand->name = $request->name;
@@ -22,7 +30,7 @@ public function store(Request $request){
             $logo_name=hexdec(uniqid());
             $ext=strtolower($logo->getClientOriginalExtension());
             $logo_full_name=$logo_name.'.'.$ext;
-            $upload_path='public/admin/logos/brands/';
+            $upload_path='admin/logos/brands/';
             $logo_url=$upload_path.$logo_full_name;
             $success=$logo->move($upload_path,$logo_full_name);
             $brand->logo=$logo_url;
@@ -38,7 +46,14 @@ public function store(Request $request){
 
     public function update(Request $request,$id){
 
+      $validated = $request->validate([
 
+          'name' => 'required|string',
+          'description' => 'required|string',
+          'logo' => 'nullable',
+
+      ]);
+      
         $brand = Brand::find($id);
 
         $brand->name = $request->name;
@@ -53,7 +68,7 @@ public function store(Request $request){
             $logo_name=hexdec(uniqid());
             $ext=strtolower($logo->getClientOriginalExtension());
             $logo_full_name=$logo_name.'.'.$ext;
-            $upload_path='public/admin/logos/brands/';
+            $upload_path='admin/logos/brands/';
             $logo_url=$upload_path.$logo_full_name;
             $success=$logo->move($upload_path,$logo_full_name);
             $brand->logo=$logo_url;

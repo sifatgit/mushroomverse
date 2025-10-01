@@ -92,7 +92,9 @@
                                 @csrf  
                                 <input id="product_id" type="hidden" name="product_id" value="{{$product->id}}">
                                 
+                                @if($product->brand_id)
                                 <input id="brand_id" type="hidden" name="brand_id" value="{{$product->brand->id}}">
+                                @endif
                                 
                                 
                                 <select class="weight-dropdown" name="measurement_id" required>

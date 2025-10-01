@@ -12,7 +12,7 @@
                                                         <img src="{{URL::to($images[0])}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="{{route('product.view',$product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist">@if(!is_null($product->wishlist))<i class="fas fa-solid fa-heart"></i>@else <i class="far fa-solid fa-heart"></i> @endif</a></li>
                                                             </ul>
@@ -26,7 +26,7 @@
                                                     <h4>{{$product->title}}</h4>
                                                     <h5 class="product-price-list{{$product->id}} text-light"> <!--<del>$ 60.00</del>-->Tk {{$product->price}}</h5>
                                                     <p>{{$product->description}}</p>
-                            <strong style="margin-left: 26px;">Brand: </strong><h5 style="float: right;">{{$product->brand->name}}</h5>        <br>
+                            <strong style="margin-left: 26px;">Brand: </strong><h5 style="float: right;">@if($product->brand_id){{$product->brand->name}}@else N/A @endif</h5>        <br>
                              @php $quantities = App\Models\ProductWeight::where('product_id',$product->id)->where('quantity','>', 0)->get() @endphp               
                             @if(count($quantities) > 0)
                             <span class="btn bg-success text-light"> Available </span>
@@ -38,7 +38,9 @@
                                 @csrf  
                                 <input id="product_id" type="hidden" name="product_id" value="{{$product->id}}">
                                 
+                                @if($product->brand_id)
                                 <input id="brand_id" type="hidden" name="brand_id" value="{{$product->brand->id}}">
+                                @endif
                                 
                                 
                                 <select class="btn weight-dropdown-list" name="measurement_id" required>
@@ -70,7 +72,7 @@
                                                         <img src="{{URL::to($images[0])}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="{{route('product.view',$product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                             </ul>

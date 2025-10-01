@@ -13,7 +13,7 @@
                                                         <img src="{{URL::to($images[0])}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="{{route('product.view',$product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                                                 <li><a class="addtowish" href="{{route('wishlist.store',$product->id)}}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist">@if($wishlist)<i class="fas fa-heart"></i>@else <i class="far fa-heart"></i> @endif</a></li>
                                                             </ul>
@@ -38,7 +38,9 @@
                                 @csrf  
                                 <input id="product_id" type="hidden" name="product_id" value="{{$product->id}}">
                                 
+                                @if($product->brand_id)
                                 <input id="brand_id" type="hidden" name="brand_id" value="{{$product->brand->id}}">
+                                @endif
                                 
                                 
                                 <select class="btn weight-dropdown-list" name="measurement_id" required>
@@ -71,7 +73,7 @@
                                                         <img src="{{URL::to($images[0])}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="{{route('product.view',$product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                                                 <li><a class="addtowish" href="{{route('wishlist.store',$product->id)}}" data-toggle="tooltip" data-placement="right" title="Add to Wishlist">@if($wishlist)<i class="fas fa-heart"></i>@else <i class="far fa-heart"></i> @endif</a></li>
                                                             </ul>

@@ -123,7 +123,7 @@
                                 @if($wishlist)
                                 <a class="btn hvr-hover addtowish2" href="{{route('wishlist.store',$product->id)}}"><i class="fas fa-heart"></i> Added to wishlist</a>
                                 @else
-                                <a class="btn hvr-hover addtowish2" href="{{route('wishlist.store',$product->id)}}"><i class="fas fa-heart"></i> Add to wishlist</a>                                
+                                <a class="btn hvr-hover addtowish2" href="{{route('wishlist.store',$product->id)}}"><i class="far fa-heart"></i> Add to wishlist</a>                                
                                 @endif
                                 
                             </div>
@@ -215,7 +215,7 @@
                                 @if($wishlist)
                                 <a class="btn hvr-hover addtowish2" href="{{route('wishlist.store',$product->id)}}"><i class="fas fa-heart"></i> Added to wishlist</a>
                                 @else
-                                <a class="btn hvr-hover addtowish2" href="{{route('wishlist.store',$product->id)}}"><i class="fas fa-heart"></i> Add to wishlist</a>                                
+                                <a class="btn hvr-hover addtowish2" href="{{route('wishlist.store',$product->id)}}"><i class="far fa-heart"></i> Add to wishlist</a>                                
                                 @endif
                             
                             </div>

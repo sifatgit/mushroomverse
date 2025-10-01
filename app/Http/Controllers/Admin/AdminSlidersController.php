@@ -10,6 +10,16 @@ class AdminSlidersController extends Controller
 {
     public function store(Request $request){
 
+        $validated = $request->validate([
+
+            'title' => 'required|string',
+            'text' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png',
+        
+
+        ]);
+
+
         $sliders = Slider::get();
 
         if(count($sliders) > 2) {
@@ -32,7 +42,7 @@ class AdminSlidersController extends Controller
             $image_name=hexdec(uniqid());
             $ext=strtolower($image->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$ext;
-            $upload_path='public/admin/images/sliders/';
+            $upload_path='admin/images/sliders/';
             $image_url=$upload_path.$image_full_name;
             $success=$image->move($upload_path,$image_full_name);
             $slider->image=$image_url;

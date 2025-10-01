@@ -1,5 +1,6 @@
   <!--site--logo-->
-      <link rel="shortcut icon" href="{{asset('frontend/asset/images/logo/Mushroomverse_web_logo.png')}}" type="image/x-icon" sizes="180x180">
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{{asset('frontend/asset/images/logo/Mushroomverse_web_logo.png')}}" type="image/x-icon" sizes="180x180">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->

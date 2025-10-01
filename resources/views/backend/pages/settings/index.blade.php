@@ -304,7 +304,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         
-                        <input type="file" name="logo" class="custom-file-input @error('logo') is-invalid @enderror" id="exampleInputFile" required>
+                        <input type="file" name="logo" class="custom-file-input @error('logo') is-invalid @enderror" id="exampleInputFile" >
 
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
 

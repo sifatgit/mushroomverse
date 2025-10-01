@@ -23,13 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {   
-    //     $carts = Cart::totalCarts();
-    //     Paginator::useBootstrapFour();
-    //      $setting = Setting::first();
-    //     view()->share([
-    //         'setting' => $setting,
-    //         'carts' => $carts
-    // ]);
+        $carts = Cart::totalCarts();
+        Paginator::useBootstrapFour();
+         $setting = Setting::first();
+        view()->share([
+            'setting' => $setting,
+            'carts' => $carts
+    ]);
         Schema::defaultStringLength(191);
     }
 }

@@ -10,6 +10,14 @@ class AdminCategoriesController extends Controller
 {
     public function store(Request $request){
 
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string|max:2000',
+        'image' => 'required|image|mimes:jpeg,jpg,png',
+        'type' => 'required|integer|in:1,2,3', // adjust allowed values
+    ]);
+
+
         $category = new Category;
 
         $category->name = $request->name;
@@ -22,7 +30,7 @@ class AdminCategoriesController extends Controller
             $image_name=hexdec(uniqid());
             $ext=strtolower($image->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$ext;
-            $upload_path='public/admin/images/categories/';
+            $upload_path='admin/images/categories/';
             $image_url=$upload_path.$image_full_name;
             $success=$image->move($upload_path,$image_full_name);
             $category->image=$image_url;
@@ -40,6 +48,16 @@ class AdminCategoriesController extends Controller
     public function update(Request $request,$id){
 
 
+      $validated = $request->validate([
+
+          'name' => 'required|string',
+          'description' => 'required|string',
+          'image' => 'required|mimes:jpeg,png',
+          'type' => 'required|integer',
+
+      ]);
+
+
         $category = Category::find($id);
 
         $category->name = $request->name;
@@ -54,7 +72,7 @@ class AdminCategoriesController extends Controller
             $image_name=hexdec(uniqid());
             $ext=strtolower($image->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$ext;
-            $upload_path='public/admin/images/categories/';
+            $upload_path='admin/images/categories/';
             $image_url=$upload_path.$image_full_name;
             $success=$image->move($upload_path,$image_full_name);
             $category->image=$image_url;

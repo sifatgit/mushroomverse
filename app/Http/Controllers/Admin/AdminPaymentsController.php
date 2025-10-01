@@ -7,5 +7,5 @@ use Illuminate\Http\Request;
 
 class AdminPaymentsController extends Controller
 {
-    //
+    //for future payment intigration
 }

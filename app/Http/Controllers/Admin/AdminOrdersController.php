@@ -15,6 +15,21 @@ class AdminOrdersController extends Controller
 
     public function update(Request $request,$id){
 
+
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'phone_no' => 'required|string|max:15',
+        'email' => 'required|email|max:255',
+        'division_id' => 'required|integer',
+        'district_id' => 'required|integer',
+        'address' => 'required|string|max:500',
+        'amount' => 'required|integer|min:1',
+        'total_items' => 'required|integer|min:1',
+        'payment_method' => 'required|in:cash,card,bkash,rocket', 
+        'invoice_no' => 'required|string|max:100',
+    ]);
+  
+
         $division = Division::find($request->division_id);
         $district = District::find($request->district_id);
 
@@ -31,7 +46,7 @@ class AdminOrdersController extends Controller
         $order->total_items = $request->total_items;
         $order->payment_method = $request->payment_method;
         $order->invoice_no = $request->invoice_no;
-        $order->status = 1;
+        $order->status = 1; //default
 
 
         $order->save();

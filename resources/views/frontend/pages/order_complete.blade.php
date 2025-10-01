@@ -26,7 +26,7 @@
       <div class="col-lg-10 col-xl-8">
         <div class="card" style="border-radius: 10px;">
           <div class="card-header px-4 py-5">
-            <h5 class=" mb-0">Thank you for placing an Order, <span style="color: #59A5A3; flex: left;">{{$order->name}}</span>!<span style="float: right;"><a href="{{url('/')}}"><img height="162" width="162" src="{{asset('public/frontend/asset/images/logo/Mushroomverse_web_logo.png')}}"></a></span></h5>
+            <h5 class=" mb-0">Thank you for placing an Order, <span style="color: #59A5A3; flex: left;">{{$order->name}}</span>!<span style="float: right;"><a href="{{url('/')}}"><img height="162" width="162" src="{{asset('frontend/asset/images/logo/Mushroomverse_web_logo.png')}}"></a></span></h5>
           </div>
             
           
@@ -48,7 +48,7 @@
                     @if($image)
                     <img src="{{URL::to($image)}}" class="img-fluid" alt="Phone">
                       @else
-                    <img src="{{asset('public/admin/images/icons/default-image_550.png')}}" class="img-fluid" alt="Phone">  
+                    <img src="{{asset('admin/images/icons/default-image_550.png')}}" class="img-fluid" alt="Phone">  
                       @endif
                   </div>
                   <div class="col-md-2 text-center d-flex justify-content-center align-items-center">

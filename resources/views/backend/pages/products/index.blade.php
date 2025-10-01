@@ -98,7 +98,7 @@
 
                              <div class="form-group">
                                <label>Brands</label>
-                               <select class="form-control @error('category_id') is-invalid @enderror" name="brand_id">
+                               <select class="form-control @error('brand_id') is-invalid @enderror" name="brand_id">
                                  <option value="">Please select a Brand</option>
                                  @foreach(App\Models\Brand::get() as $brand)
                                   <option value="{{$brand->id}}">{{$brand->name}}</option>
@@ -150,7 +150,7 @@
                     <tr>
                       <td>{{$product->id}}</td>
                         <td>{{$product->title}}</td>                      
-                        <td>@if($product->category->type == 2){{$product->brand->name}} @else N/A @endif</td>                      
+                        <td>@if($product->category_id && $product->category->type == 2 && $product->brand_id){{$product->brand->name}} @else N/A @endif</td>                      
                         <td>
                           <!-- Button trigger modal -->
       <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#largeModal{{$product->id}}">View Photos</a>
@@ -194,7 +194,7 @@
                         <td>{{$product->slug}}</td>                     
                         <td>{{$product->price}}</td>                     
                         <td>
-                        @if($product->category->type ==2)  
+                        @if($product->category_id && $product->category->type == 2)  
                         @php $quantity = 0; @endphp 
                         @foreach($product->productweight as $wgt)
                         @php $quantity += $wgt->quantity; @endphp
@@ -206,7 +206,7 @@
                         @endif
                         @endif
 
-                        @if($product->category->type !=2)
+                        @if($product->category_id && $product->category->type != 2)
 
                         @php $productavailability = App\Models\ProductWeight::where('product_id',$product->id)->where('availability',1)->get();
 
@@ -217,8 +217,12 @@
                         <p id="quantity{{$product->id}}" class="bg-warning" align="center"> Unavailable</p>
                         @endif
                         @endif
-                        </td>                     
-                        <td>{{$product->category->name}}</td>                     
+                        </td>
+                        @if($product->cateogory_id)                     
+                        <td>{{$product->category->name}}</td>
+                        @else                     
+                        <td>N/A</td>
+                        @endif                     
                         <td>@if($product->sale == 1) Yes @else No @endif</td>                    
                         <td>@if($product->featured == 1) Yes @else No @endif</td>                     
                   
@@ -316,7 +320,7 @@
 
                              </div>
 
-                             @if($product->category->type == 2)
+                             @if($product->category_id && $product->category->type == 2)
                              <div class="form-group">
                                <label>Brand</label>
                                <select class="form-control @error('brand_id') is-invalid @enderror" name="brand_id">

@@ -24,7 +24,7 @@
                     @if($image)
                     <img src="{{URL::to($image)}}" class="img-fluid" alt="Product Image">
                     @else
-                    <img src="{{asset('public/admin/images/icons/default-image_550.png')}}" class="img-fluid" alt="Product Image">
+                    <img src="{{asset('admin/images/icons/default-image_550.png')}}" class="img-fluid" alt="Product Image">
                     @endif
                 </div>
                 <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
@@ -58,7 +58,7 @@
                     @if($image)
                     <img src="{{URL::to($image)}}" class="img-fluid" alt="Product Image">
                     @else
-                    <img src="{{asset('public/admin/images/icons/default-image_550.png')}}" class="img-fluid" alt="Product Image">
+                    <img src="{{asset('admin/images/icons/default-image_550.png')}}" class="img-fluid" alt="Product Image">
                     @endif
 
                 </div>

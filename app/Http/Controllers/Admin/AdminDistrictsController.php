@@ -10,6 +10,13 @@ class AdminDistrictsController extends Controller
 {
     public function store(Request $request){
 
+      $validated = $request->validate([
+
+          'district' => 'required|string',
+          'division_id' => 'required|integer',
+
+      ]);
+
         $district = new District;
 
         $district->name = $request->district;

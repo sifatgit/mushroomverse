@@ -31,13 +31,13 @@
                                     @if($wishlist->product_image)
 									<img class="img-fluid" src="{{$wishlist->product_image}}" alt="" />
                                     @else
-                                    <img class="img-fluid" src="{{asset('public/admin/images/icons/default-image_550.png')}}" alt="" />
+                                    <img class="img-fluid" src="{{asset('admin/images/icons/default-image_550.png')}}" alt="" />
                                     @endif
 								</a>
                                 @else
                                     <a href="#">
                                     
-                                    <img class="img-fluid" src="{{asset('public/admin/images/icons/default-image_550.png')}}" alt="" />
+                                    <img class="img-fluid" src="{{asset('admin/images/icons/default-image_550.png')}}" alt="" />
                                    
                                 </a>                                
                                 @endif
@@ -67,8 +67,9 @@
                                 @csrf  
                                 <input id="product_id" type="hidden" name="product_id" value="{{$wishlist->product->id}}">
                                 
+                                @if($wishlist->product->brand_id)
                                 <input id="brand_id" type="hidden" name="brand_id" value="{{$wishlist->product->brand->id}}">
-                                
+                                @endif
                                 @if($wishlist->product)
                                 <select class="cart-list" id="#weight-dropdown" name="measurement_id" required>
                                 <option value="">Select a weight</option>
@@ -100,12 +101,12 @@
                                     @if($wishlist->product_image)
                                     <img class="img-fluid" src="{{$wishlist->product_image}}" alt="" />
                                     @else
-                                    <img class="img-fluid" src="{{asset('public/admin/images/icons/default-image_550.png')}}" alt="" />
+                                    <img class="img-fluid" src="{{asset('admin/images/icons/default-image_550.png')}}" alt="" />
                                     @endif
 								</a>
                                 @else
                                         <a href="#">
-                                    <img class="img-fluid" src="{{asset('public/admin/images/icons/default-image_550.png')}}" alt="" />
+                                    <img class="img-fluid" src="{{asset('admin/images/icons/default-image_550.png')}}" alt="" />
                                 </a>                                
                                 @endif
                                     </td>

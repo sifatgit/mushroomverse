@@ -12,22 +12,34 @@ class AdminProductsController extends Controller
 {
 
 
-        public function add(){
-
-            return view('backend.pages.products.add_products');
-        }
-
         public function store(Request $request){
+
+        $validated = $request->validate([
+            'category_id' => 'required|integer|exists:categories,id',
+            'brand_id' => 'nullable|integer|exists:brands,id',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:2000',
+            'slug' => 'nullable|string|unique:products,slug|max:255',
+            'price' => 'required|integer|min:1',
+            'images.*' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+        ]);
+
+
+
+
         $product = new Product;
 
 
         $product->category_id = $request->category_id;
-        $product->brand_id = $request->brand_id;
+
+
+        $product->brand_id = $request->brand_id;            
+
         $product->title = $request->title;
         $product->description = $request->description;
         $product->slug = $request->title;
         $product->price = $request->price;
-        $product->admin_id = 1; 
+        $product->admin_id = 1; //default
 
        $images=array();
         if($files=$request->file('images')){
@@ -39,7 +51,7 @@ class AdminProductsController extends Controller
                 $fileName.=$i;
                 $fileName.='.';
                 $fileName.=$fileNameExtract[1];
-                $path = 'public/admin/images/products/';
+                $path = 'admin/images/products/';
                 $file->move($path,$fileName);
                 $image_url = $path.$fileName;
                 $images[]=$image_url;
@@ -60,6 +72,15 @@ class AdminProductsController extends Controller
 
         
         public function update(Request $request,$id){
+
+        $validated = $request->validate([
+            'category_id' => 'required|integer',
+            'brand_id' => 'required|integer',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'slug' => 'required|string',
+            'price' => 'required|integer',
+        ]);
 
             $product = Product::find($id);
 
@@ -114,7 +135,7 @@ class AdminProductsController extends Controller
                     $fileName.=$i;
                     $fileName.='.';
                     $fileName.=$fileNameExtract[1];
-                    $path = 'public/admin/images/products/';
+                    $path = 'admin/images/products/';
                     $file->move($path,$fileName);
                     $image_url = $path.$fileName;
                     $images[]=$image_url;

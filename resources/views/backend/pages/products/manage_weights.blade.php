@@ -108,7 +108,7 @@
                     <tr>
                       <td>{{$stock->id}}</td>
                         <td>{{$stock->product->title}}</td>                      
-                        <td>@if($stock->product->category->type == 2){{$stock->product->brand->name}} @else N/A @endif</td>
+                        <td>@if($stock->product->category->type == 2 && $stock->product->brand_id){{$stock->product->brand->name}} @else N/A @endif</td>
                         <td>{{$stock->product->category->name}}</td>
                         @php $images = explode("|",$stock->product->images); @endphp
                         <td><img class="d-block" style="width: 50px; height: 40px;" src="{{URL::to($images[0])}}"></td>                                                                              

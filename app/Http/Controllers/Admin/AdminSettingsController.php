@@ -18,6 +18,27 @@ class AdminSettingsController extends Controller
         }
         public function store(Request $request){
 
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'about_us_headline' => 'required|string|max:255',
+            'about_us_description' => 'required|string|max:2000',
+            'contact_us_description' => 'required|string|max:2000',
+            'phone_no' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'address' => 'required|string|max:500',
+            'terms_conditions' => 'required|string|max:3000',
+            'privacy_policy' => 'required|string|max:3000',
+            'delivery_information' => 'required|string|max:2000',
+            'google_map_link' => 'required|url|max:500',
+            'googleplus_address' => 'nullable|url|max:255',
+            'facebook_address' => 'nullable|url|max:255',
+            'twitter_address' => 'nullable|url|max:255',
+            'instagram_address' => 'nullable|url|max:255',
+            'pinterest_address' => 'nullable|url|max:255',
+            'whatsapp_address' => 'nullable|url|max:255',
+        ]);
+           
+
         if (Setting::count() > 0) {
 
         return back()->with('message','Only one entry is allowed in this table');
@@ -54,7 +75,7 @@ class AdminSettingsController extends Controller
             $image_name=hexdec(uniqid());
             $ext=strtolower($logo->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$ext;
-            $upload_path='public/admin/images/logo/';
+            $upload_path='admin/images/logo/';
             $image_url=$upload_path.$image_full_name;
             $success=$logo->move($upload_path,$image_full_name);
             $setting->logo = $image_url;
@@ -66,7 +87,7 @@ class AdminSettingsController extends Controller
             $image_name=hexdec(uniqid());
             $ext=strtolower($about_us_image->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$ext;
-            $upload_path='public/admin/images/about_us_image/';
+            $upload_path='admin/images/about_us_image/';
             $image_url=$upload_path.$image_full_name;
             $success=$about_us_image->move($upload_path,$image_full_name);
             $setting->about_us_image = $image_url;
@@ -87,6 +108,27 @@ class AdminSettingsController extends Controller
         }
 
         public function update(Request $request){
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'about_us_headline' => 'required|string|max:255',
+            'about_us_description' => 'required|string|max:2000',
+            'contact_us_description' => 'required|string|max:2000',
+            'phone_no' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'address' => 'required|string|max:500',
+            'terms_conditions' => 'required|string|max:3000',
+            'privacy_policy' => 'required|string|max:3000',
+            'delivery_information' => 'required|string|max:2000',
+            'google_map_link' => 'required|url|max:500',
+            'googleplus_address' => 'nullable|url|max:255',
+            'facebook_address' => 'nullable|url|max:255',
+            'twitter_address' => 'nullable|url|max:255',
+            'instagram_address' => 'nullable|url|max:255',
+            'pinterest_address' => 'nullable|url|max:255',
+            'whatsapp_address' => 'nullable|url|max:255',
+        ]);
+
 
 
         $setting = Setting::first();
@@ -121,7 +163,7 @@ class AdminSettingsController extends Controller
             $image_name=hexdec(uniqid());
             $ext=strtolower($logo->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$ext;
-            $upload_path='public/admin/images/logo/';
+            $upload_path='admin/images/logo/';
             $image_url=$upload_path.$image_full_name;
             $success=$logo->move($upload_path,$image_full_name);
             $setting->logo = $image_url;
@@ -137,7 +179,7 @@ class AdminSettingsController extends Controller
             $image_name=hexdec(uniqid());
             $ext=strtolower($about_us_image->getClientOriginalExtension());
             $image_full_name=$image_name.'.'.$ext;
-            $upload_path='public/admin/images/about_us_image/';
+            $upload_path='admin/images/about_us_image/';
             $image_url=$upload_path.$image_full_name;
             $success=$about_us_image->move($upload_path,$image_full_name);
             $setting->about_us_image = $image_url;
@@ -155,6 +197,7 @@ class AdminSettingsController extends Controller
 
 
         return back()->with('success','Settings updated successfully!');
+        
         }
 
 

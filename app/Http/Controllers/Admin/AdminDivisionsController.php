@@ -10,6 +10,12 @@ class AdminDivisionsController extends Controller
 {
     public function store(Request $request){
 
+      $validated = $request->validate([
+
+          'division' => 'required|string',
+
+      ]);
+
         $division = new Division;
 
         $division->name = $request->division;
