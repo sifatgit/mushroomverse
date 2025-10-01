@@ -1,133 +1,200 @@
-🍄 Mushroomverse
+# 🍄 Mushroomverse — Full-Stack Laravel eCommerce
 
-mushroomverse.store is a Laravel-based eCommerce platform for delivering all types of mushrooms. Built as a showcase of full-stack Laravel development, it demonstrates my ability to design, build, and deploy a complete web application with real-world workflows like product inventory, checkout, and payment integration.
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
+![AJAX](https://img.shields.io/badge/AJAX-005A9C?style=for-the-badge)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
-🖥️ Frontend (User Experience & Design)
+Mushroomverse is a Laravel-based eCommerce platform for delivering all types of mushrooms, built as my first complete full-stack project for a startup. It showcases my ability to design, develop, and deploy a real-world web application with product inventory, checkout workflows, and dynamic user interactions.
 
-Responsive Layout: Built with Bootstrap for seamless experience across desktop, tablet, and mobile.
+**Live Demo:** [Mushroomverse.store](https://mushroomverse.store) – Explore the fully functional eCommerce platform.
 
-Blade Templating: Dynamic rendering of product listings, categories, and stock status.
+---
 
-Clean UI/UX: Intuitive navigation, category filtering, accessible checkout flow, and wishlist functionality.
+## Key Highlights
+- **Responsive & Intuitive UI/UX:** Mobile-first design using Bootstrap and Blade templates, with category filtering, wishlist, and AJAX-powered live search.
+- **Dynamic Shopping Experience:** Real-time cart updates, stock availability, price filtering, guest checkout with IP-based tracking, and **real-time audio notifications in the admin panel for new orders and visitor messages**.
+- **Admin & Backend Expertise:** IP-restricted admin panel with Laravel Breeze, secure CRUD operations, inventory management, and order tracking.
+- **Technical Skills Demonstrated:** Full-stack Laravel development, database schema design (MySQL), AJAX-driven interactivity, secure checkout workflows, and deployment on shared hosting.
+- **Future-Ready:** Planned payment gateway integration (bKash/Stripe), user authentication with order history, and automated notifications.
 
-SEO-Friendly Structure: Semantic HTML, product metadata, and descriptive product details pages.
+---
 
-Interactive Features:
+## Impact
+- Delivered a professional, functional eCommerce platform that handles real-world workflows and demonstrates end-to-end Laravel capabilities.
+- Showcases problem-solving skills, such as live product filtering, AJAX interactions, IP-based admin security, and real-time admin notifications.
 
-“In Stock” / “Out of Stock” labels linked to backend inventory.
+---
 
-Guest checkout without registration.
+## Tech Stack
+- **Backend:** Laravel (PHP)
+- **Frontend:** Blade, Bootstrap, jQuery/AJAX
+- **Database:** MySQL
+- **Version Control:** Git / GitHub
 
-IP-based order placement system.
+---
 
-Contact CTA button for direct phone orders.
+## Database Setup
 
-AJAX-Powered Interactions:
+You can import the preloaded database using the exported SQL file:
 
-Add to Cart: Dynamic cart updates without page reload.
+[Download mushroomverse.sql](./database/mushroomverse.sql)
 
-Wishlist: Real-time product add/remove functionality.
+## Quick Start
 
-Search, Filtering & Pagination: Instant live search, category filters, and paginated product lists.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/mushroomverse.git
+   
+Install dependencies:
+```bash
+composer install
+npm install && npm run dev
+```
 
-📄 Navigation Pages
+Configure environment variables:
+```bash 
+cp .env.example .env
+```
 
-Home (Landing Page)
+Generate app key:
+```bash
+php artisan key:generate
+```
 
-Eye-catching slider with multiple images and “Shop Now” button.
+Run migrations and seeders:
+```bash 
+php artisan migrate --seed
+```
 
-Main category section for easy mushroom browsing.
 
-Interactive categories showing relevant mushrooms on click.
+Notes:-
+Cart Logic:
+Uncomment the Cart-related logic in app/Models/Cart.php (lines 24–96) to enable stock adjustments for different product types and automatic item quantity correction.
 
-Blog section with latest articles and “Read More” links.
+```php
+    public static function totalCarts(){
 
-Shop
 
-AJAX-based product list with real-time pagination.
+      $main_carts = Cart::where('ip_address',request()->ip())->where('order_id',NULL)->get();
 
-Sort products by price (high → low & low → high).
+      //if(count($main_carts) > 0){
 
-Price filtering and category sidebar.
+              foreach($main_carts as $cart){
 
-Two product views: grid & list.
+                if($cart->productweight->product->category->type == 2){
 
-About Us
+                   if($cart->productweight->quantity < $cart->product_quantity){
+                      if($cart->productweight->quantity == 0){
 
-Brief description of services and business.
+                      $cart->delete(); 
+                    
+                    }
+                      else{
+                      $decrement = $cart->product_quantity - $cart->productweight->quantity;
 
-Contact Us
+                      $cart->decrement('product_quantity',$decrement);
+                      $cart->save();  
+                    }
 
-AJAX-based contact form for inquiries and requests.
 
-Detailed contact info (address, phone, email).
+                  }         
+                }
+                else{
+                    
+                      if($cart->productweight->availability == 0){
+                        
+                       $cart->delete();  
+                      }            
+                    
+                }
 
-Google Maps integration for location display.
 
-Header & Footer (Reusable across pages)
+              }       
 
-Top CTA buttons: phone, My Orders, Our Location, Wishlist.
+      return $carts = $main_carts;        
+      //}
 
-Header: Navigation menu, search bar, and cart sidebar trigger.
+    }
 
-Footer:
+/**
+ * total Items in the cart
+ * @return integer total item
+ */
+  public static function totalItems()
+  {
+    $carts = Cart::totalCarts();
 
-Information: About Us, Terms & Conditions, Privacy Policy, Delivery Info
+    $total_item = 0;
 
-Contact Us: All contact details
+    foreach ($carts as $cart) {
+      $total_item += $cart->product_quantity;
+    }
+    return $total_item;
+  }
 
-Social Media: Links to social profiles
+  public static function totalprice(){
 
-⚙️ Backend (Business Logic & Infrastructure)
+    $carts = Cart::totalCarts();
 
-Frameworks & Tools: Laravel (MVC), Bootstrap, AdminLTE.
+    $total_price = 0;
 
-Database: MySQL schema covering sliders, division-districts, blogs, notifications, messages, brands, products, categories, inventory, carts, and orders.
+    foreach($carts as $cart){
 
-Admin Authentication: IP-based middleware with Laravel Breeze restricting admin login to authorized devices.
+      $total_price += $cart->product->price * $cart->product_quantity;
+    }
 
-Admin Dashboard: Manage products, orders, customers, and all database tables.
+    return $total_price;
+  }
+```
 
-Order Workflow: Guest checkout tracked via IP (future migration to user accounts).
+AppServiceProvider:
+Uncomment the code in app/Providers/AppServiceProvider.php (lines 26–32) to share global data like carts and settings with all views:
 
-Payment System: Cash on Delivery (COD), with bKash integration planned.
+```php
+$carts = Cart::totalCarts();
+Paginator::useBootstrapFour();
+$setting = Setting::first();
+view()->share([
+    'setting' => $setting,
+    'carts' => $carts
+]);
+```
 
-Inventory Management: Dynamic stock updates and product availability control.
+Start the development server:
 
-Security Practices: CSRF protection, form validation, and clean Eloquent ORM queries.
+```bash 
+php artisan serve
+```
 
-Notifications: Real-time audio notifications for order placement and message submission (AJAX).
+Access the application
 
-Seeder Data: Preloaded test data for demonstration purposes.
+Frontend:
+http://127.0.0.1:8000/
 
-🔮 Upcoming Features (Roadmap)
+Admin Panel:
+http://127.0.0.1:8000/login
+(check database/seeders/UserSeeder.php for credentials)
 
-Payment Gateway Integration (bKash, Stripe, etc.)
 
-User Authentication (Laravel Breeze/Jetstream) with order history
+Features
+Responsive UI with Bootstrap and Blade templating
 
-Automated notifications via email/SMS for orders and updates
+AJAX-powered live search, cart, wishlist, and product filtering
 
-Performance & SEO enhancements for faster load times
+Real-time audio notifications for new orders and visitor messages
 
-🛠️ Tech Stack
+Guest checkout with IP-based tracking
 
-Backend: Laravel (PHP)
-Frontend: Blade Templates, Bootstrap, jQuery, AJAX
-Database: MySQL
-Version Control: Git / GitHub
-Deployment: Namecheap Shared Hosting
+Admin panel with IP-restricted access (Laravel Breeze)
 
-🚀 Skills Demonstrated
+Inventory management, order tracking, and CRUD operations
 
-Full-stack Laravel development (frontend + backend)
+Future-ready for payment integration and user authentication
 
-Database schema design and relationships
-
-UI/UX design with mobile-first responsive layout
-
-Secure checkout workflows
-
-Iterative development and roadmap planning
-
-
+Cloning & Contribution
+If you want to contribute or run a local copy for testing, follow the Quick Start instructions above.
