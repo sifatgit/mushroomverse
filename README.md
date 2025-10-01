@@ -42,7 +42,7 @@ Mushroomverse is a Laravel-based eCommerce platform for delivering all types of 
 
 You can import the preloaded database using the exported SQL file:
 
-[Downloadmushroomverse.sql](https://github.com/user-attachments/files/22649908/mushroomverse.sql)
+[Download_mushroomverse.sql](https://github.com/user-attachments/files/22649908/mushroomverse.sql)
 
 ## Quick Start
 
