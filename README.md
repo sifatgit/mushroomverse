@@ -1,66 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🍄 Mushroomverse
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+mushroomverse.store is a Laravel-based eCommerce platform for delivering all types of mushrooms. Built as a showcase of full-stack Laravel development, it demonstrates my ability to design, build, and deploy a complete web application with real-world workflows like product inventory, checkout, and payment integration.
 
-## About Laravel
+🖥️ Frontend (User Experience & Design)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Responsive Layout: Built with Bootstrap for seamless experience across desktop, tablet, and mobile.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Blade Templating: Dynamic rendering of product listings, categories, and stock status.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Clean UI/UX: Intuitive navigation, category filtering, accessible checkout flow, and wishlist functionality.
 
-## Learning Laravel
+SEO-Friendly Structure: Semantic HTML, product metadata, and descriptive product details pages.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Interactive Features:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+“In Stock” / “Out of Stock” labels linked to backend inventory.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Guest checkout without registration.
 
-## Laravel Sponsors
+IP-based order placement system.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Contact CTA button for direct phone orders.
 
-### Premium Partners
+AJAX-Powered Interactions:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Add to Cart: Dynamic cart updates without page reload.
 
-## Contributing
+Wishlist: Real-time product add/remove functionality.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Search, Filtering & Pagination: Instant live search, category filters, and paginated product lists.
 
-## Code of Conduct
+📄 Navigation Pages
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Home (Landing Page)
 
-## Security Vulnerabilities
+Eye-catching slider with multiple images and “Shop Now” button.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Main category section for easy mushroom browsing.
 
-## License
+Interactive categories showing relevant mushrooms on click.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Blog section with latest articles and “Read More” links.
+
+Shop
+
+AJAX-based product list with real-time pagination.
+
+Sort products by price (high → low & low → high).
+
+Price filtering and category sidebar.
+
+Two product views: grid & list.
+
+About Us
+
+Brief description of services and business.
+
+Contact Us
+
+AJAX-based contact form for inquiries and requests.
+
+Detailed contact info (address, phone, email).
+
+Google Maps integration for location display.
+
+Header & Footer (Reusable across pages)
+
+Top CTA buttons: phone, My Orders, Our Location, Wishlist.
+
+Header: Navigation menu, search bar, and cart sidebar trigger.
+
+Footer:
+
+Information: About Us, Terms & Conditions, Privacy Policy, Delivery Info
+
+Contact Us: All contact details
+
+Social Media: Links to social profiles
+
+⚙️ Backend (Business Logic & Infrastructure)
+
+Frameworks & Tools: Laravel (MVC), Bootstrap, AdminLTE.
+
+Database: MySQL schema covering sliders, division-districts, blogs, notifications, messages, brands, products, categories, inventory, carts, and orders.
+
+Admin Authentication: IP-based middleware with Laravel Breeze restricting admin login to authorized devices.
+
+Admin Dashboard: Manage products, orders, customers, and all database tables.
+
+Order Workflow: Guest checkout tracked via IP (future migration to user accounts).
+
+Payment System: Cash on Delivery (COD), with bKash integration planned.
+
+Inventory Management: Dynamic stock updates and product availability control.
+
+Security Practices: CSRF protection, form validation, and clean Eloquent ORM queries.
+
+Notifications: Real-time audio notifications for order placement and message submission (AJAX).
+
+Seeder Data: Preloaded test data for demonstration purposes.
+
+🔮 Upcoming Features (Roadmap)
+
+Payment Gateway Integration (bKash, Stripe, etc.)
+
+User Authentication (Laravel Breeze/Jetstream) with order history
+
+Automated notifications via email/SMS for orders and updates
+
+Performance & SEO enhancements for faster load times
+
+🛠️ Tech Stack
+
+Backend: Laravel (PHP)
+Frontend: Blade Templates, Bootstrap, jQuery, AJAX
+Database: MySQL
+Version Control: Git / GitHub
+Deployment: Namecheap Shared Hosting
+
+🚀 Skills Demonstrated
+
+Full-stack Laravel development (frontend + backend)
+
+Database schema design and relationships
+
+UI/UX design with mobile-first responsive layout
+
+Secure checkout workflows
+
+Iterative development and roadmap planning
+
+

@@ -21,79 +21,79 @@ class Cart extends Model
   //  return $carts;
   // }
 
-    public static function totalCarts(){
+//     public static function totalCarts(){
 
 
-      $main_carts = Cart::where('ip_address',request()->ip())->where('order_id',NULL)->get();
+//       $main_carts = Cart::where('ip_address',request()->ip())->where('order_id',NULL)->get();
 
-      //if(count($main_carts) > 0){
+//       //if(count($main_carts) > 0){
 
-              foreach($main_carts as $cart){
+//               foreach($main_carts as $cart){
 
-                if($cart->productweight->product->category->type == 2){
+//                 if($cart->productweight->product->category->type == 2){
 
-                   if($cart->productweight->quantity < $cart->product_quantity){
-                      if($cart->productweight->quantity == 0){
+//                    if($cart->productweight->quantity < $cart->product_quantity){
+//                       if($cart->productweight->quantity == 0){
 
-                      $cart->delete(); 
+//                       $cart->delete(); 
                     
-                    }
-                      else{
-                      $decrement = $cart->product_quantity - $cart->productweight->quantity;
+//                     }
+//                       else{
+//                       $decrement = $cart->product_quantity - $cart->productweight->quantity;
 
-                      $cart->decrement('product_quantity',$decrement);
-                      $cart->save();  
-                    }
+//                       $cart->decrement('product_quantity',$decrement);
+//                       $cart->save();  
+//                     }
 
 
-                  }         
-                }
-                else{
+//                   }         
+//                 }
+//                 else{
                     
-                      if($cart->productweight->availability == 0){
+//                       if($cart->productweight->availability == 0){
                         
-                       $cart->delete();  
-                      }            
+//                        $cart->delete();  
+//                       }            
                     
-                }
+//                 }
 
 
-              }       
+//               }       
 
-      return $carts = $main_carts;        
-      //}
+//       return $carts = $main_carts;        
+//       //}
 
-    }
+//     }
 
-/**
- * total Items in the cart
- * @return integer total item
- */
-  public static function totalItems()
-  {
-    $carts = Cart::totalCarts();
+// /**
+//  * total Items in the cart
+//  * @return integer total item
+//  */
+//   public static function totalItems()
+//   {
+//     $carts = Cart::totalCarts();
 
-    $total_item = 0;
+//     $total_item = 0;
 
-    foreach ($carts as $cart) {
-      $total_item += $cart->product_quantity;
-    }
-    return $total_item;
-  }
+//     foreach ($carts as $cart) {
+//       $total_item += $cart->product_quantity;
+//     }
+//     return $total_item;
+//   }
 
-  public static function totalprice(){
+//   public static function totalprice(){
 
-    $carts = Cart::totalCarts();
+//     $carts = Cart::totalCarts();
 
-    $total_price = 0;
+//     $total_price = 0;
 
-    foreach($carts as $cart){
+//     foreach($carts as $cart){
 
-      $total_price += $cart->product->price * $cart->product_quantity;
-    }
+//       $total_price += $cart->product->price * $cart->product_quantity;
+//     }
 
-    return $total_price;
-  }
+//     return $total_price;
+//   }
 
   public function product(){
 
